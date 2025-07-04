@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Book a Photographer</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/book.css') }}">
+</head>
+<body class="book-bg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <a class="navbar-brand font-weight-bold" href="/" style="color:#e74c3c;">CAPTURE<span style="color:#222;">MOMENTS</span></a>
+  </nav>
+  <div class="container booking-container my-5">
+    <h2 class="booking-title text-center mb-4">Booking Details</h2>
+    <form method="post" action="/book">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Event Type</label>
+          <select class="form-control" name="event_type" required>
+            <option value="">Select Event Type</option>
+            <option>Wedding</option>
+            <option>Birthday</option>
+            <option>Corporate</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label>Start Date</label>
+          <input type="date" class="form-control" name="start_date" required>
+        </div>
+        <div class="form-group col-md-3">
+          <label>End Date</label>
+          <input type="date" class="form-control" name="end_date" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Your Name</label>
+          <input type="text" class="form-control" name="user_name" placeholder="Full Name" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Email Address</label>
+          <input type="email" class="form-control" name="email" placeholder="example@gmail.com" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Phone Number</label>
+          <input type="tel" class="form-control" name="phone" placeholder="(123) 456-7890" required>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Package/Price</label>
+          <select class="form-control" name="package" required>
+            <option value="">Select Package</option>
+            <option>Basic</option>
+            <option>Standard</option>
+            <option>Premium</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label>Select Photographer</label>
+          <select class="form-control" name="photographer_id" required>
+            <option value="">Select Photographer</option>
+            {% for p in photographers %}
+              {% if p.availability == 'Available' %}
+                <option value="{{ p.id }}">{{ p.name }} ({{ p.id }})</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label>Payment Method</label>
+          <select class="form-control" name="payment_method" required>
+            <option value="">Select Payment Method</option>
+            <option>Cash</option>
+            <option>Credit Card</option>
+            <option>UPI</option>
+            <option>Net Banking</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Special Requests</label>
+        <textarea class="form-control" name="special_requests" rows="2" placeholder="Any special requests?"></textarea>
+      </div>
+      <button type="submit" class="btn btn-block book-btn mt-3">Book Now</button>
+    </form>
+  </div>
+</body>
+</html>

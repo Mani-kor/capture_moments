@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Services - Capture Moments</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/services.css') }}">
+</head>
+<body class="services-bg">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
+    <a class="navbar-brand font-weight-bold" href="/" style="color:#e74c3c;">CAPTURE<span style="color:#222;">MOMENTS</span></a>
+  </nav>
+  <div class="container py-5">
+    <h2 class="text-center mb-5">Our Services</h2>
+    <div class="row">
+      {% for s in services %}
+      <div class="col-md-4 mb-4">
+        <div class="card service-card shadow-sm text-center">
+          <div class="service-icon mb-3">
+            <i class="fa {{ s.icon }}"></i>
+          </div>
+          <h5 class="card-title">{{ s.title }}</h5>
+          <p class="card-text">{{ s.desc }}</p>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>

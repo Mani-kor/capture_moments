@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap');
+
+.photographers-bg {
+  background: linear-gradient(135deg, #f8ffae 0%, #43c6ac 100%);
+  min-height: 100vh;
+  font-family: 'Roboto', sans-serif;
+}
+
+h2 {
+  color: #217b7e;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  font-size: 2.2rem;
+}
+
+.photographer-card {
+  border: none;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(67,198,172,0.10);
+}
+
+.photographer-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 32px 0 rgba(31, 38, 135, 0.18);
+}
+
+.photographer-img {
+  height: 260px;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.card-title {
+  color: #217b7e;
+  font-weight: 700;
+  font-size: 1.35rem;
+}
+
+.badge-success {
+  background-color: #43c6ac;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.badge-danger {
+  background-color: #e74c3c;
+  color: #fff;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 4px 10px;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, #217b7e 0%, #43c6ac 100%);
+  border: none;
+  font-weight: 700;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s, box-shadow 0.3s, transform 0.2s;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, #43c6ac 0%, #217b7e 100%);
+  color: #ffd600;
+  box-shadow: 0 8px 32px rgba(33,123,126,0.13);
+  transform: translateY(-2px) scale(1.03);
+}
+
+@media (max-width: 700px) {
+  .photographer-img {
+    height: 180px;
+  }
+  h2 {
+    font-size: 1.3rem;
+  }
+}

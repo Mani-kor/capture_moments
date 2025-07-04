@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photographers</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/photographers.css') }}">
+</head>
+<body class="photographers-bg">
+  <div class="container py-5">
+    <h2 class="text-center mb-5">Our Photographers</h2>
+    <div class="row">
+      {% for p in photographers %}
+      <div class="col-md-4 mb-4">
+        <div class="card photographer-card shadow-lg">
+          <img src="{{ url_for('static', filename='images/' + p.image) }}" class="card-img-top photographer-img" alt="{{ p.name }}">
+          <div class="card-body text-center">
+            <h5 class="card-title">{{ p.name }}</h5>
+            <p class="card-text"><strong>ID:</strong> {{ loop.index }}</p>
+            <p class="card-text"><strong>Skills:</strong> {{ p.skills }}</p>
+            <p class="card-text"><strong>Availability:</strong> 
+              <span class="badge {% if p.availability == 'Available' %}bg-success{% else %}bg-danger{% endif %}">
+                {{ p.availability }}
+              </span>
+            </p>
+            {% if p.availability == 'Available' %}
+              <a href="{{ url_for('book') }}?photographer_id={{ loop.index }}" class="btn btn-primary mt-2">Book Now</a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+</html>
