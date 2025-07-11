@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Capture Moments</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+</head>
+<body class="homepage-bg">
+  <nav class="navbar navbar-expand-lg navbar-custom">
+    <a class="navbar-brand" href="#">Capture Moments</a>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item"><a class="nav-link" href="/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="/services">Services</a></li>
+        <li class="nav-item"><a class="nav-link" href="/photographers">Photographers</a></li>
+        <li class="nav-item"><a class="nav-link" href="/book">Book</a></li>
+        {% if logged_in %}
+          <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        {% else %}
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+
+  <div class="main-content d-flex flex-column justify-content-center align-items-center text-center">
+    {% if logged_in %}
+      <h1 class="head">Welcome to our photography</h1>
+      <p class="lead" style="color:#217b7e; font-size:1.3rem;">
+        Explore, book, and cherish your special moments with our talented photographers.<br>
+        Thank you for being a part of the Capture Moments family!
+      </p>
+    {% else %}
+      <h1 class="head">Welcome to Capture Moments</h1>
+      <p class="lead">Your one-stop solution for capturing and sharing your precious moments.</p>
+      <a href="/login"><button class="button">Get Started</button></a>
+    {% endif %}
+  </div>
+</body>
+</html>
